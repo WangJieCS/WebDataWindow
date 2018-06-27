@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=gb2312" language="java"
-	import="java.sql.*" errorPage="" pageEncoding="GBK"%>
+	import="java.sql.*,java.util.*" errorPage="" pageEncoding="GBK"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -27,26 +27,150 @@
 	color: red;
 }
 </style>
+<link 	href="http://travel-128.view.sitestar.cn/a5ff9619c0d55ec33f52759ebc554432.cssx" rel="stylesheet">
 
 </head>
-<body background="./file/back.jpg">
+<body>
 	<div align="center">
-		<p class="STYLE1">Value Convet</p>
-	</div>
+
+
+		<div style="margin-top: 5%; margin-bottom: 50px;">
+			<span
+				style="color: #394c5f; font-family: 'Microsoft YaHei'; font-size: 40px; line-height: 28px; widows: 1;">Web数据窗口</span>
+		</div>
+
+
+		<div class="product_list-layer73A2B298864E621ED516398DFA76638F"
+			style="overflow: hidden; margin-top: 30px;">
+			<ul style="margin: 0px;">
+				<li class="wp-new-article-style_lis"
+					style="width: 160px; margin-right: 18px; height: 80px; background-color: #6792d4;">
+					<div class="img"
+						style="width: 180px; text-align: center; vertical-align: middle; display: table-cell;">
+
+
+						<a target="_blank" href="createMainTable.jsp" class="aeffect"
+							style="margin-top: 0; padding-top: 0; border-top-style: solid;">
+
+							<h1
+								style="color: #e4fce1; vertical-align: middle; /*! margin: 20; */ /*! padding: 20; */ border-top-width: 0px; border-top-style: solid; font-size: 20px;">创建主体信息表</h1>
+
+						</a>
+					</div>
+				</li>
+				<li class="wp-new-article-style_lis"
+					style="width: 160px; margin-right: 18px; height: 80px; background-color: #6792d4;">
+					<div class="img"
+						style="width: 180px; text-align: center; vertical-align: middle; display: table-cell;">
+
+
+						<a target="_blank" href="linkPage.jsp" class="aeffect">
+							<h1
+								style="color: #e4fce1; vertical-align: middle; font-size: 20px;">搜索页面</h1>
+						</a>
+					</div>
+				</li>
+				<li class="wp-new-article-style_lis"
+					style="width: 160px; margin-right: 18px; height: 80px; background-color: #6792d4;">
+					<div class="img"
+						style="width: 180px; text-align: center; vertical-align: middle; display: table-cell;">
+
+
+						<a target="_blank" href="windowServlet?opType=showCreateMapPage"
+							class="aeffect">
+							<h1 style="color: #e4fce1; font-size: 20px;">生成映射规则</h1>
+						</a>
+					</div>
+				</li>
+				<li class="wp-new-article-style_lis"
+					style="width: 160px; margin-right: 18px; height: 80px; background-color: #6792d4;">
+					<div class="img"
+						style="width: 180px; text-align: center; vertical-align: middle; display: table-cell;">
+
+
+						<a target="_blank"
+							href="windowServlet?opType=showCreateFunctionPage"
+							class="aeffect">
+							<h1 style="color: #e4fce1; font-size: 20px;">添加转换函数</h1>
+						</a>
+					</div>
+				</li>
+
+				<li class="wp-new-article-style_lis"
+					style="width: 160px; margin-right: 18px; height: 80px; background-color: #6792d4;">
+					<div class="img"
+						style="width: 180px; text-align: center; vertical-align: middle; display: table-cell;">
+
+
+						<a target="_blank" href="windowServlet?opType=showRelationPage"
+							class="aeffect">
+							<h1 style="font-size: 20px; color: #e4fce1;">添加属性值关系</h1>
+						</a>
+					</div>
+				</li>
+
+				<li class="wp-new-article-style_lis"
+					style="width: 160px; margin-right: 18px; height: 80px; background-color: #6792d4;">
+					<div class="img"
+						style="width: 180px; text-align: center; vertical-align: middle; display: table-cell;">
+
+
+						<a target="_blank" href="windowServlet?opType=showConvertPage"
+							class="aeffect">
+							<h1 style="font-size: 20px; color: #525252;">转换数据值</h1>
+						</a>
+					</div>
+				</li>
+
+			</ul>
+			<style>
+<!--
+#layer73A2B298864E621ED516398DFA76638F .wp-new-article-style_lis:hover {
+	border-color: #1dd2af;
+}
+
+#layer73A2B298864E621ED516398DFA76638F .wp-new-article-style_lis {
 	
-	<form id="form1" name="form1" method="post" action="OntologyServlet?opType=doConvertOntology">
+}
+-->
+</style>
+		</div>
+	</div>
+
+
+	<div style="width: 71%; margin-left: 15.2%;">
+
+	
+	<form id="form1" name="form1" method="post" action="windowServlet?opType=doConvert">
 	<div  align="left" class="STYLE2" style="border:1px solid blue">	
-			<p>数据项本体概念：<input name="concept"/></p>
-			<p>当前通常值：<input name="currentValue"/></p>
-            <p>当前语义值：<input name="currentAttriValues"/></p>
-            <p>目标语义值：<input name="goalAttriValues"/></p>
-            <p class="STYLE3">多个值之间用空格隔开</p>
+			<p>主体信息表：
+				<select id="tableName" name="tableName">
+			<%  String tableName=(String)session.getAttribute("tableName");
+						out.print("<option value='"+tableName+"'>"+tableName+"</option>");
+								%>
+			</select></p>
+			<p>涉及语义异构字段：
+			<select id="heterogeneousFeild" name="heterogeneousFeild">
+			<%  String heterogeneousFeild=(String)session.getAttribute("heterogeneousFeild");
+						out.print("<option value='"+heterogeneousFeild+"'>"+heterogeneousFeild+"</option>");
+								%>
+			</select></p>
+            <p>属性名：
+            	<select id="attributeName" name="attributeName">
+			<%  String theAttribute=(String)session.getAttribute("theAttribute");
+						out.print("<option value='"+theAttribute+"'>"+theAttribute+"</option>");
+								%>
+</select>
+ 
+            </p>
+            <p>目标属性值：<input name="goalAttriValue"/></p>
+            <!-- <p class="STYLE3">多个值之间用空格隔开</p> -->
   </div>
 	 <p>
 	 <input type="submit" id="submit" value="转换" />
 	 </p>
 	 
 	 </form>
-
+</div>
 </body>
 </html>

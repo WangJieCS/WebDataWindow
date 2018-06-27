@@ -25,6 +25,16 @@ public class AlignDataItem {
 
 	int maxNum = 0; // 所有数据记录中含有最多数据项的那条记录在集合 中的下标
 
+	public int getMaxItems() {
+		return maxItems;
+	}
+
+
+	public int getMaxNum() {
+		return maxNum;
+	}
+
+
 	public AlignDataItem(ArrayList<ArrayList<Element>> DataItems) {//获得最大长度的数据记录，其节点path将作为数组第零行，即列名
 		this.DataItems = DataItems;
 		for (int i = 0; i < DataItems.size(); i++) {
@@ -86,17 +96,20 @@ public class AlignDataItem {
 			}
 		}
 
-		/*
-		 * for(int i=0;i<DataItemsArray.length; i++){ for (int j = 0; j <
-		 * DataItemsArray[i].length; j++) {
-		 * System.out.println(DataItemsArray[i][j]); } }
+		
+		/*for (int i = 0; i < DataItemsArray.length; i++) {
+			for (int j = 0; j < DataItemsArray[i].length; j++) {
+				System.out.println(DataItemsArray[i][j]);
+			}
+		}
 		 */
 
 		for (int i = 1; i < DataItemsArray.length; i++) {
+	
 			ArrayList<Element> DataItem = new ArrayList<>();
 			for (int j = 0; j < DataItemsArray[i].length; j++) {
 				DataItem.add((Element) DataItemsArray[i][j]);
-			//	System.out.println(DataItemsArray[i][j]);
+				//System.out.println(DataItemsArray[i][j]);
 			}
 			NewDataItems.add(DataItem);
 		}

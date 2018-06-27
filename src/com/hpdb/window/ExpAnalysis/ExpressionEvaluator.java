@@ -6,7 +6,7 @@ import java.util.Stack;
 
 public class ExpressionEvaluator {  
   
-     private ExpressionEvaluator()  
+     public ExpressionEvaluator()  
      {  
            
      }  
@@ -16,7 +16,7 @@ public class ExpressionEvaluator {
       * @param expression 要计算的表达式,如"1+2+3+4" 
       * @return 
       */  
-     private static List<ExpressionNode> parseExpression(String expression)  
+     public static List<ExpressionNode> parseExpression(String expression)  
      {  
        /*  if(StringUtils.isEmpty(expression)){  
              return new ArrayList<ExpressionNode>();  
@@ -252,7 +252,7 @@ public class ExpressionEvaluator {
       * @param data 要计算的值,有可能是两位或一位数 
       * @return 
       */  
-     private static Object calculate(ExpressionNodeType nodeType, Object[] data)  
+     public static Object calculate(ExpressionNodeType nodeType, Object[] data)  
      {  
          double d1, d2;  
          
@@ -308,7 +308,7 @@ public class ExpressionEvaluator {
       * @param value 
       * @return 
       */  
-     private static Double ConvertToDecimal(Object value)  
+     public static Double ConvertToDecimal(Object value)  
      {  
          if (value instanceof Boolean)  
          {  
